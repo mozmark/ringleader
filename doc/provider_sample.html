@@ -1,0 +1,73 @@
+<html>
+<head>
+  <title>ZAP API UI</title>
+</head>
+<body>
+  <h1>Welcome to the Test Proxy (TST)</h1>
+  <p>
+  TST is an easy to use integrated penetration testing tool for finding
+  vulnerabilities in web applications.
+  </p>
+  <p>
+  Please be aware that you should only attack applications that you have been
+  specifically been given permission to test.
+  </p>
+  <p>
+  <button id="btn">Click to setup!</button>
+  </p>
+  <div id="setup" style="display:none">
+    Here's some content to show when you want to get the user to install the
+    XPI (or maybe get a browser that supports mitm setup).
+  </div>
+  <div id="success" style="display:none">
+    We have success!!!
+  </div>
+  <div id="failure" style="display:none">
+    Oh noes!
+  </div>
+</body>
+<script>
+  var detected = false;
+  // event listener for button press
+  var click = function(event) {
+    var evt = new CustomEvent('ConfigureSecProxy',{"detail":{"url":"http://localhost:8083/manifest"}});
+    document.dispatchEvent(evt);
+    setTimeout(function() {
+      console.log('tick');
+      if (!detected) {
+        var setup = document.getElementById('setup');
+        setup.style.display = 'inline';
+     }
+    },1000);
+  };
+
+  // event listener for configuration started event
+  var started = function(event) {
+    console.log('configuration has started');
+    detected = true;
+  };
+
+  // event listener for configuration failed event
+  // use this to let the user know something has gone wrong
+  var failed = function(event) {
+    console.log('configuration has failed');
+    document.getElementById('failure').style.display = 'inline';
+  };
+
+  // event listener for configuration succeeded
+  // use this to show a success message to a user in your welcome doc
+  var succeeded = function(event) {
+    console.log('configuration has succeeded');
+    document.getElementById('success').style.display = 'inline';
+  };
+
+  // hook event listener into button
+  var btn = document.getElementById('btn');
+  btn.addEventListener('click',click,false);
+
+  // Hook configuration event listeners into the document
+  document.addEventListener('ConfigureSecProxyStarted',started,false);
+  document.addEventListener('ConfigureSecProxyFailed',failed,false);
+  document.addEventListener('ConfigureSecProxySucceeded',succeeded,false);
+</script>
+</html>
