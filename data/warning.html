@@ -7,13 +7,18 @@ one at http://mozilla.org/MPL/2.0/.
   <body>
     <p>
     <h3>Warning</h3>
-    Really scary warning to let you know you're giving all your secrets away.
+    Would you like to enable this site as a man-in-the-middle provider?
     </p>
     <p>
-    <div id='required'><input type="checkbox" id="yup"> I'm OK with this.</div>
+    A man-in-the-middle provider can intercept and modify all traffic to and
+    from your browser while activated; Do <b>not</b> enable unless you
+    completely understand what you are doing.
     </p>
     <p>
-    <button id="cancel">No way!</button>
-    <button id="confirm">Sure, go ahead!</button>
+    <div id='required'><input type="checkbox" id="yup"> I understand</div>
+    </p>
+    <p>
+    <button id="cancel">Cancel</button>
+    <button id="confirm" disabled="true">Enable</button>
   </body>
 </html>

@@ -7,13 +7,17 @@
 var cancelClicked = function() {
   self.port.emit('cancel','Nope!');
 };
+
 var confirmClicked = function() {
   if (document.getElementById('yup').checked) {
     self.port.emit('confirm','ok');
-  } else {
-    document.getElementById('required').style.background = '#FF0000';
   }
+};
+
+var checkboxClicked = function(event) {
+  document.getElementById('confirm').disabled = !event.target.checked;
 };
 
 document.getElementById('confirm').addEventListener('click',confirmClicked,false);
 document.getElementById('cancel').addEventListener('click',cancelClicked,false);
+document.getElementById('yup').addEventListener('click',checkboxClicked,false);
