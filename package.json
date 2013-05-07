@@ -2,7 +2,7 @@
     "name": "gclimitm",
     "license": "MPL 2.0",
     "author": "Mark Goodwin",
-    "version": "0.1",
+    "version": "0.2",
     "fullName": "GcliMitm",
     "id": "jid1-CZ1BeoFM9Mmlzg",
     "description": "A Firefox addon for configuring and using a MITM proxy (e.g. OWASP ZAP)"
