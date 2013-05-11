@@ -1,9 +1,9 @@
 {
-    "name": "gclimitm",
+    "name": "fx-intercept",
     "license": "MPL 2.0",
     "author": "Mark Goodwin",
     "version": "0.2",
-    "fullName": "GcliMitm",
+    "fullName": "Firefox Intercept",
     "id": "jid1-CZ1BeoFM9Mmlzg",
-    "description": "A Firefox addon for configuring and using a MITM proxy (e.g. OWASP ZAP)"
+    "description": "A Firefox addon for configuring and using intercepting proxies (e.g. OWASP ZAP)"
 }
