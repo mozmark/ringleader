@@ -20,16 +20,19 @@ Instructions
    You can set up any number of configurations for different tools and switch
    between them.
 3. Use your intercepting proxy as you normally would. FX-Intercept comes
-   with two useful gcli command for security testing with ZAP; intercept
-   (for intercepting requests and responses) and record (for use with the
-   ZAP Zest extension).
+   with two useful [gcli](https://hacks.mozilla.org/2012/08/new-firefox-command-line-helps-you-develop-faster/)
+   commands for security testing with ZAP; *mitm intercept* (for intercepting
+   requests and responses) and *mitm record* (for use with the ZAP Zest
+   extension).
+
+You can switch between configurations (or clear them completely) using the
+*mitm config* command.
 
 Should you wish to revert your intercepting proxy configuration, you can do
-this with the 'mitm config clear' command. 'mitm config remove' allows you to
+this with the *mitm config clear* command. *mitm config remove* allows you to
 remove a configuration completely.
 
 Integrating other tools:
 ------------------------
 I've designed this to be easy to integrate support in other tools. I'll
-write this up but, for now, you can see how the mitmconf ZAP addon (an alpha
-ZAP extension).
+write this up but, for now, you can see how the mitmconf ZAP addon works.
