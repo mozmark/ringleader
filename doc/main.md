@@ -11,7 +11,8 @@ Providers must make the following available to allow configuration:
 Supported Features
 ------------------
 
-3 security tool features are currently supported:
+Three security tool features are currently supported:
+
 1. Proxies
 2. Configuration of a Certificate Authority (e.g. for intercepting proxies)
 3. Command registration - tools can provide descriptors which allow REST APIs to be invoked from the browser
