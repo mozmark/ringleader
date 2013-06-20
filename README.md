@@ -32,7 +32,6 @@ Should you wish to revert your intercepting proxy configuration, you can do
 this with the *mitm config clear* command. *mitm config remove* allows you to
 remove a configuration completely.
 
-Integrating other tools:
+Integrating your tools:
 ------------------------
-I've designed this to be easy to integrate support in other tools. I'll
-write this up but, for now, you can see how the mitmconf ZAP addon works.
+I've designed this to be easy to integrate support in other tools; documentation is in progress [here](https://github.com/mozmark/Mitm-Tool/blob/master/doc/main.md). You can also look to see how the mitmconf ZAP addon works.
