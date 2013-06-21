@@ -73,8 +73,9 @@ The second is that we're using the parameter in the url of the execAction - noti
 
 Finally, notice "expression" there in execAction - you can specify a JSONPath expression (the tool supports a safe subset of JSONPath) to extract data from the response to give to the user (as the output for the command).
 
-More on Parameters
-------------------
+
+More on Parameters:
+-------------------
 
 You can limit the possible values for a parameter by using providing an object (rather than 'string') to as the type. For example:
 
@@ -85,8 +86,9 @@ You can limit the possible values for a parameter by using providing an object (
     "name": "selection",
     "data": ["name1", "name2", "name3"]
   },
-  "description": "create a new session; you may only name it name1, name2 or name3",
+  "description": "you may only name it name1, name2 or name3",
   "defaultValue": "name2"
 }
 ```
 Here we have a parameter called param1 which can take the values name1, name2 or name3 - if the user does not specify a value it will default to name2.
+
