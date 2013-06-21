@@ -92,3 +92,72 @@ You can limit the possible values for a parameter by using providing an object (
 ```
 Here we have a parameter called param1 which can take the values name1, name2 or name3 - if the user does not specify a value it will default to name2.
 
+Tool operations:
+----------------
+
+The Service Commands functionality used by this tool supports [callback data](https://github.com/mozmark/ServiceTest/blob/master/doc/service_commands.md#callback-data) being sent back to the embedding tool. PNH makes use of this by providing operations that can be invoked from your commands via callbackData.
+
+This is best illustrated with an example:
+
+```json
+{
+  "name": "brk",
+  "description": "create a new session",
+  "returnType": "string",
+  "params": [{
+    "name": "state",
+    "type": {
+      "name": "selection",
+      "data": ["on", "off"]
+    },
+    "description": "break on request",
+    "defaultValue": "on"
+  }, {
+    "name": "scope",
+    "type": {
+      "name": "selection",
+      "data": ["tab", "global"]
+    },
+    "description": "local to tab or global",
+    "defaultValue": "tab"
+  }],
+  "execAction": {
+    "expression": "$.Result",
+    "callbackData": {
+      "conditionalCommands": {
+        "expression": "$.args.state",
+        "states": {
+          "on": [{
+            "command": "addToHeader",
+            "params": {
+              "headerName": "X-Security-Proxy",
+              "value": "intercept",
+              "scope": {
+                "type": "expression",
+                "expression": "$.args.scope",
+                "extract": true
+              }
+            }
+          }],
+          "off": [{
+            "command": "removeFromHeader",
+            "params": {
+              "headerName": "X-Security-Proxy",
+              "value": "intercept",
+              "scope": {
+                "type": "expression",
+                "expression": "$.args.scope",
+                "extract": true
+              }
+            }
+          }]
+        }
+      }
+    }
+  }
+}
+```
+
+This is a description for the 'brk' command which causes ZAP (with the mitm-config addon) to break on request / response.  callbackData has an attribute called "conditionalCommands" which specifies an expression and a map of states to lists of commands. If the result the expression matches a state, the associated commands will be invoked.
+
+At present only the 'addToHeader' and 'removeFromHeader' commands are supported. This list will be expanded in time.
