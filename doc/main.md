@@ -15,5 +15,5 @@ Three security tool features are currently supported:
 
 1. Proxies
 2. Configuration of a Certificate Authority (e.g. for intercepting proxies)
-3. Command registration - tools can provide descriptors which allow REST APIs to be invoked from the browser
+3. Command registration - tools can provide descriptors ([see documentation](service_commands.md)) which allow REST APIs to be invoked from the browser
 
