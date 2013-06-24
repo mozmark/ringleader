@@ -19,7 +19,7 @@ Instructions
    extension, you can do that by browsing to <http://localhost:8080/mitm>.
    You can set up any number of configurations for different tools and switch
    between them.
-3. Use your intercepting proxy as you normally would. FX-Intercept comes
+3. Use your intercepting proxy as you normally would. Ringleader comes
    with two useful [gcli](https://hacks.mozilla.org/2012/08/new-firefox-command-line-helps-you-develop-faster/)
    commands for security testing with ZAP; *mitm intercept* (for intercepting
    requests and responses) and *mitm record* (for use with the ZAP Zest
