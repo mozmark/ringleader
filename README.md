@@ -1,10 +1,10 @@
-FX-Intercept
-============
+Ringleader
+==========
 
 Introduction
 ------------
 
-FX-Intercept is a Firefox addon which makes it easier to configure and use
+Ringleader is a Firefox addon which makes it easier to configure and use
 your intercepting proxy of choice. It was originally written with [OWASP
 ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) in mind
 but, since we believe in choice at Mozilla, it's easy to make use of this with
@@ -14,7 +14,7 @@ Instructions
 ------------
 1. Install the addon. I'll put it up on AMO soon but you'll always be able
    to get the latest version
-   [here](https://github.com/mozmark/Mitm-Tool/blob/master/fx-intercept.xpi).
+   [here](https://github.com/mozmark/ringleader/blob/master/ringleader.xpi).
 2. Browse to your tool's configuration page. If you have ZAP with the MiTM
    extension, you can do that by browsing to <http://localhost:8080/mitm>.
    You can set up any number of configurations for different tools and switch
@@ -34,4 +34,4 @@ remove a configuration completely.
 
 Integrating your tools:
 ------------------------
-I've designed this to be easy to integrate support in other tools; documentation is in progress [here](https://github.com/mozmark/Mitm-Tool/blob/master/doc/main.md). You can also look to see how the mitmconf ZAP addon works.
+I've designed this to be easy to integrate support in other tools; documentation is in progress [here](https://github.com/mozmark/ringleader/blob/master/doc/main.md). You can also look to see how the mitmconf ZAP addon works.
