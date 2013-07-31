@@ -197,7 +197,7 @@ Ringleader supports the substitution of certain objects with data extracted from
 
 At present, 2 types are supported; expression types and template types:
 
-```
+```json
 {
   "someThing":{"type":"expression","expression":"$.key","extract":true},
   "someOtherThing":{"type":"template","template":"key=${$.key}"}
