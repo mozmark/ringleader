@@ -60,16 +60,16 @@ This still isn't very interesting, though. What if we want to be able to supply 
     "type": "string",
     "description": "the name of the new session to create"
   }],
-  "execAction": {
-    "url": "http://localhost:8080/JSON/core/action/newSession/?zapapiformat=JSON&name=${name}",
-    "expression": "$.Result"
+  "execAction":{
+    "url":"http://localhost:8080/JSON/core/action/newSession/?zapapiformat=JSON&name=${$.args.name}",
+    "expression":"$.Result"
   }
 }
 ```
 
 The first thing to notice here is that we are able to specify parameters. Here we have a single parameter called 'name'. String parameters can have any value but it's possible to limit the possible values (and even have default). This will be covered later on.
 
-The second is that we're using the parameter in the url of the execAction - notice '${name}' on the end of the URL? This will be substituted with the value the user enters as a command parameter.
+The second is that we're using the parameter in the url of the execAction - notice '${$.args.name}' on the end of the URL? This a JSONPath expression which will be evaluated against the command's data, the result of which will be substituted with the value the user enters as a command parameter. All you have to know about this for the time being is that $.args.PARAM gets the value of the 'PARAM' parameter. 
 
 Finally, notice "expression" there in execAction - you can specify a JSONPath expression (the tool supports a safe subset of JSONPath) to extract data from the response to give to the user (as the output for the command).
 
