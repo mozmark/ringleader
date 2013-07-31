@@ -189,3 +189,19 @@ This is best illustrated with an example:
 This is a description for the 'brk' command which causes ZAP (with the mitm-config addon) to break on request / response.  callbackData has an attribute called "conditionalCommands" which specifies an expression and a map of states to lists of commands. If the result the expression matches a state, the associated commands will be invoked.
 
 At present only the 'addToHeader' and 'removeFromHeader' commands are supported. This list will be expanded in time.
+
+Types:
+------
+
+Ringleader supports the substitution of certain objects with data extracted from another. This can be useful when data is expected in a particular format but a service has already been defined to return something else.
+
+At present, 2 types are supported; expression types and template types:
+
+```
+{
+  "someThing":{"type":"expression","expression":"$.key","extract":true},
+  "someOtherThing":{"type":"template","template":"key=${$.key}"}
+}
+```
+
+In the above example, someThing is set the the result of evaluating the expression '$.key' expression on the command's data; if the tab key is 4, the resulting value would be 4. someOtherThing is similar, the the result is substituted into the template string; e.g. 'key=4'.
