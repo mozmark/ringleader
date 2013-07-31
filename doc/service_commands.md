@@ -111,11 +111,11 @@ Consider the following command:
       "description": "should something be enabled?",
       "defaultValue": "on"
     }
-    ],
-    "execAction":{
-      "url":"http://localhost/something?tab=${$.key}&state=${$.args.state}"
-    }
+  ],
+  "execAction":{
+    "url":"http://localhost/something?tab=${$.key}&state=${$.args.state}"
   }
+}
 ```
 
 Here the tab request parameter will be unique per tab when the command is issued by the user.
