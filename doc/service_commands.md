@@ -92,10 +92,17 @@ You can limit the possible values for a parameter by using providing an object (
 ```
 Here we have a parameter called param1 which can take the values name1, name2 or name3 - if the user does not specify a value it will default to name2.
 
+Data in Commands:
+-----------------
+
+In most places where it's possible to extract data for command actions (see Tool Operations) or substitution into an URL (e.g. command execAction URLs) you can provide some kind of expression (see use of $.args.name above). This expression is evaluated against a command object. Available attributes depend on the point at which the expression is evaluated. In particular:
+* args will not be available until the command is issued
+* response will not be available until the command is issues and execAction has succeeded
+
 Contextual data in Commands:
 ----------------------------
 
-Sometimes you might want to make use of certain contextual data in your commands. In most places where it's possible to extract data for command actions (see Tool Operations) or substitution into an URL (e.g. command execAction URLs) you can provide some kind of expression (see use of $.args.name above). In these cases, it will be possible to get certain contextual data. For example, the 'key' attribute of the command data object contains an identifier that is unique for a tab. This can be useful when, for instance, you want to identify a specific tab in your service.
+Sometimes you might want to make use of certain contextual data in your commands. In these cases, it will be possible to get certain contextual data. For example, the 'key' attribute of the command data object contains an identifier that is unique for a tab. This can be useful when, for instance, you want to identify a specific tab in your service.
 
 Consider the following command:
 
