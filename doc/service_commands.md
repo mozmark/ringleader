@@ -7,6 +7,11 @@ Service Commands are a way of creating commands (e.g. GCLI commands) from a web 
 
 Commands are defined in a JSON descriptor (which looks a little like a GCLI [command definition](https://github.com/mozilla/gcli/blob/master/docs/writing-commands.md))
 
+Restrictions:
+-------------
+
+Ringleader will not, by default, allow descriptors (or the services they describe) to reside on different origins. If you need to relax this requirement (e.g. for testing) you can set the ringleader.check.origin preference in firefox. Set the pref to 'noport' if you wish to relax the port check or 'off' if you want to turn off origin checks for descriptors and services completely. Please do not require this pref to be set for your service to work; it is for testing only.
+
 The Descriptor:
 ---------------
 The descriptor is a JSON document containing a list of commands:
