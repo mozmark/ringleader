@@ -102,7 +102,7 @@ In most places where it's possible to extract data for command actions (see Tool
 Contextual data in Commands:
 ----------------------------
 
-Sometimes you might want to make use of certain contextual data in your commands. In these cases, it will be possible to get certain contextual data. For example, the 'key' attribute of the command data object contains an identifier that is unique for a tab. This can be useful when, for instance, you want to identify a specific tab in your service.
+Sometimes you might want to make use of certain contextual data in your commands. In these cases, it will be possible to get certain contextual data. For example, the 'tab' attribute of the command data object contains information pertaining to the current tab, with 'tab.key' being an identifier that is unique for a tab. This can be useful when, for instance, you want to identify a specific tab in your service.
 
 Consider the following command:
 
@@ -120,12 +120,16 @@ Consider the following command:
     }
   ],
   "execAction":{
-    "url":"http://localhost/something?tab=${$.key}&state=${$.args.state}"
+    "url":"http://localhost/something?tab=${$.tab.key}&state=${$.args.state}"
   }
 }
 ```
 
 Here the tab request parameter will be unique per tab when the command is issued by the user.
+
+Other contextual data include:
+* tab.URL - the URL of the top level document in the current tab represented as a string
+* tab.location - the location object pertaining to the current top level document in the tab (useful for getting protocol, port and host information, for example)
 
 Tool operations:
 ----------------
@@ -206,9 +210,9 @@ At present, 2 types are supported; expression types and template types:
 
 ```json
 {
-  "someThing":{"type":"expression","expression":"$.key","extract":true},
-  "someOtherThing":{"type":"template","template":"key=${$.key}"}
+  "someThing":{"type":"expression","expression":"$.tab.key","extract":true},
+  "someOtherThing":{"type":"template","template":"key=${$.tab.key}"}
 }
 ```
 
-In the above example, someThing is set the the result of evaluating the expression '$.key' expression on the command's data; if the tab key is 4, the resulting value would be 4. someOtherThing is similar, the the result is substituted into the template string; e.g. 'key=4'.
+In the above example, someThing is set the the result of evaluating the expression '$.tab.key' expression on the command's data; if the tab key is 4, the resulting value would be 4. someOtherThing is similar, the the result is substituted into the template string; e.g. 'key=4'.
