@@ -12,6 +12,13 @@ Restrictions:
 
 Ringleader will not, by default, allow descriptors (or the services they describe) to reside on different origins. If you need to relax this requirement (e.g. for testing) you can set the ringleader.check.origin preference in firefox. Set the pref to 'noport' if you wish to relax the port check or 'off' if you want to turn off origin checks for descriptors and services completely. Please do not require this pref to be set for your service to work; it is for testing only.
 
+If you want to test with this preference set for you, you can run the addon with cfx from the addon-sdk with the following option:
+
+```
+--static-args="{\"prefs\":{\"ringleader.check.origin\": \"off\"}}"
+```
+
+
 The Descriptor:
 ---------------
 The descriptor is a JSON document containing a list of commands:
