@@ -130,6 +130,22 @@ You can limit the possible values for a parameter by using providing an object (
 ```
 Here we have a parameter called param1 which can take the values name1, name2 or name3 - if the user does not specify a value it will default to name2.
 
+It's possible to obtain the list of possible parameter values from JSON data provided by a server:
+
+```json
+{
+  "name": "param1",
+  "type": {
+    "name": "selection",
+    "dataAction":{
+      "url":"http://example.com/some/url/to/get/params",
+      "expression":"$.params[*]"
+    }
+  },
+  "description": "possible values come from the server",
+}
+```
+
 Data in Commands:
 -----------------
 
