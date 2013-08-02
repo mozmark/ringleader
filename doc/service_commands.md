@@ -85,6 +85,32 @@ The second is that we're using the parameter in the url of the execAction - noti
 
 Finally, notice "expression" there in execAction - you can specify a JSONPath expression (the tool supports a safe subset of JSONPath) to extract data from the response to give to the user (as the output for the command).
 
+execAction also allows you to specify the request method, the request body and the content type for the request body. E.g:
+
+```json
+{
+    "name":"someCommand",
+    "description":"a test command",
+    "returnType":"string",
+    "params":[
+    {
+      "name":"p1",
+      "type": "string",
+      "description":"parameter one"
+    }
+    ],
+        "execAction":{
+          "url":"http://example.com/doSomething",
+          "method":"POST",
+          "requestBody":"arg1=${$.args.p1}",
+          "contentType":"application/x-www-form-urlencoded",
+          "expression":"$.some.thing.from.response",
+          "callbackData":{"foo":"bar","wibble":{"type":"expression","expression":"$.response.Result","extract":true}}
+        }
+  }
+```
+
+In this example we're mimicking a form POST to http://example.com/doSomething
 
 More on Parameters:
 -------------------
