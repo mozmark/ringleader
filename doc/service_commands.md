@@ -149,7 +149,7 @@ It's possible to obtain the list of possible parameter values from JSON data pro
 You can make use of the values in previous parameters in the URL for getting subsequent ones, e.g.:
 
 ```json
-{
+[{
   "name": "param1",
   "type": {
     "name": "selection",
@@ -170,7 +170,7 @@ You can make use of the values in previous parameters in the URL for getting sub
     }
   },
   "description": "more possible values come from the server",
-}
+}]
 ```
 
 Data in Commands:
