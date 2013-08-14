@@ -146,6 +146,33 @@ It's possible to obtain the list of possible parameter values from JSON data pro
 }
 ```
 
+You can make use of the values in previous parameters in the URL for getting subsequent ones, e.g.:
+
+```json
+[{
+  "name": "param1",
+  "type": {
+    "name": "selection",
+    "dataAction":{
+      "url":"http://example.com/some/url/to/get/params",
+      "expression":"$.params[*]"
+    }
+  },
+  "description": "possible values come from the server",
+},
+{
+  "name": "param2",
+  "type": {
+    "name": "selection",
+    "dataAction":{
+      "url":"http://example.com/some/other/url/to/get/params?param1was=${$.args.param1}",
+      "expression":"$.params[*]"
+    }
+  },
+  "description": "more possible values come from the server",
+}]
+```
+
 Data in Commands:
 -----------------
 
