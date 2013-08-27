@@ -1,9 +1,9 @@
 {
-    "name": "ringleader",
+    "name": "fx_pnh",
     "license": "MPL 2.0",
     "author": "Mark Goodwin",
-    "version": "0.2",
-    "fullName": "Firefox Intercept",
+    "version": "0.3",
+    "fullName": "Firefox Plug-n-Hack",
     "id": "jid1-CZ1BeoFM9Mmlzg",
-    "description": "A Firefox addon for configuring and using intercepting proxies (e.g. OWASP ZAP)"
+    "description": "A Firefox addon for configuring and using security tools"
 }
