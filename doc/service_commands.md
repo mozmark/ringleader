@@ -10,12 +10,12 @@ Commands are defined in a JSON descriptor (which looks a little like a GCLI [com
 Restrictions:
 -------------
 
-Ringleader will not, by default, allow descriptors (or the services they describe) to reside on different origins. If you need to relax this requirement (e.g. for testing) you can set the ringleader.check.origin preference in firefox. Set the pref to 'noport' if you wish to relax the port check or 'off' if you want to turn off origin checks for descriptors and services completely. Please do not require this pref to be set for your service to work; it is for testing only.
+PnH will not, by default, allow descriptors (or the services they describe) to reside on different origins. If you need to relax this requirement (e.g. for testing) you can set the pnh.check.origin preference in firefox. Set the pref to 'noport' if you wish to relax the port check or 'off' if you want to turn off origin checks for descriptors and services completely. Please do not require this pref to be set for your service to work; it is for testing only.
 
 If you want to test with this preference set for you, you can run the addon with cfx from the addon-sdk with the following option:
 
 ```
---static-args="{\"prefs\":{\"ringleader.check.origin\": \"off\"}}"
+--static-args="{\"prefs\":{\"pnh.check.origin\": \"off\"}}"
 ```
 
 
@@ -285,7 +285,7 @@ At present only the 'addToHeader' and 'removeFromHeader' commands are supported.
 Types:
 ------
 
-Ringleader supports the substitution of certain objects with data extracted from another. This can be useful when data is expected in a particular format but a service has already been defined to return something else.
+PnH supports the substitution of certain objects with data extracted from another. This can be useful when data is expected in a particular format but a service has already been defined to return something else.
 
 At present, 2 types are supported; expression types and template types:
 
