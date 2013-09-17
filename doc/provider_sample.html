@@ -17,44 +17,53 @@
       Here's some content to show when you want to get the user to install the
       XPI (or maybe get a browser that supports mitm setup).
     </div>
-    <div id="in_progress" style="display:none">
-      Configuring...
+     <div id="in_progress" style="display:none">
+      <p>Configuring your browser to work with your man-in-the-middle proxy...</p>
     </div>
     <div id="success" style="display:none">
-      We have success!!!
+      <p id="successMessage">Configuration succeeded!</p>
     </div>
     <div id="failure" style="display:none">
-      Oh noes!
+      <p>Configuration failed: <span id="failureMessage">Configuration failed</span></p>
     </div>
     <div id="activated" style="display:none">
-      mitm support has been activated in your browser.
+      <p id="activatedMessage">support for your tool has been activated in your browser:</p>
     </div>
     <div id="actions">
       <p>
       <button id="btn">Click to setup!</button>
       </p>
-    </button>
   </div>
 </body>
 <script>
   var detected = false;
-  var divs = ['setup','in_progress','success','failure','activated','actions'];
-  var manifest = {"detail":{"url":"http://localhost:8080/manifest"}};
-
+  var elements = ['setup','in_progress','success','failure','activated','actions'];
+  var manifest = {"detail":{"url":"http://localhost:3000/static/manifest.json"}};
   // only show UI for the named elements
-  var showUI = function(visible){
-    for(var idx in divs){
-      if (-1 != visible.indexOf(divs[idx])) {
-        document.getElementById(divs[idx]).style.display = 'inline';
+  var showUI = function(visible,data){
+    function replaceTextContent(node, message) {
+      while(node.firstChild) {
+        node.removeChild(node.firstChild);
+      }
+      node.appendChild(document.createTextNode(message));
+    }
+    for(var idx in elements){
+      var elementName = elements[idx];
+      var displayElement = document.getElementById(elements[idx]);
+      var messageElement = document.getElementById(elements[idx]+'Message');
+      if (-1 != visible.indexOf(elementName)) {
+        if(data && data[elementName]) {
+          replaceTextContent(messageElement, data[elementName]);
+        }
+        displayElement.style.display = 'inline';
         } else {
-        document.getElementById(divs[idx]).style.display = 'none';
+        displayElement.style.display = 'none';
       }
     }
   };
-
   // event listener for button press
   var click = function(event) {
-    var evt = new CustomEvent('ConfigureSecProxy', manifest);
+    var evt = new CustomEvent('ConfigureSecTool', manifest);
     document.dispatchEvent(evt);
     setTimeout(function() {
       if (!detected) {
@@ -62,42 +71,37 @@
      }
     },1000);
   };
-
   // event listener for configuration started event
   var started = function(event) {
     console.log('configuration has started');
     showUI(['in_progress']);
     detected = true;
   };
-
   // event listener for configuration failed event
   // use this to let the user know something has gone wrong
   var failed = function(event) {
     console.log('configuration has failed');
-    showUI(['failure','actions']);
+    var detail = event.detail ? JSON.parse(event.detail) : null;
+    showUI(['failure','actions'], detail);
   };
-
   // event listener for configuration succeeded
   // use this to show a success message to a user in your welcome doc
   var succeeded = function(event) {
     console.log('configuration has succeeded');
     showUI(['success']);
   };
-
   // event listener for browser support activated
   var activated = function(event) {
     console.log('activation has occurred');
     showUI(['activated','actions']);
   };
-
   // hook event listener into button
   var btn = document.getElementById('btn');
   btn.addEventListener('click',click,false);
-
   // Hook configuration event listeners into the document
-  document.addEventListener('ConfigureSecProxyStarted',started,false);
-  document.addEventListener('ConfigureSecProxyFailed',failed,false);
-  document.addEventListener('ConfigureSecProxyActivated',activated,false);
-  document.addEventListener('ConfigureSecProxySucceeded',succeeded,false);
+  document.addEventListener('ConfigureSecToolStarted',started,false);
+  document.addEventListener('ConfigureSecToolFailed',failed,false);
+  document.addEventListener('ConfigureSecToolActivated',activated,false);
+  document.addEventListener('ConfigureSecToolSucceeded',succeeded,false);
 </script>
 </html>
