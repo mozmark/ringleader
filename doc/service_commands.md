@@ -60,6 +60,8 @@ You probably want commands to be a bit more interesting than this, though. Here'
 
 In this case, we have a sub-command called 'command' that the user can invoke with 'test command'. The command, when executed, results in a (GET) request being made to the url specified in execAction.
 
+Note: You will need to leave the 'empty' command descriptor (with just the description) at the top; this is to let the command line know what your tool's commands are for.
+
 This still isn't very interesting, though. What if we want to be able to supply a parameter? And what if we want to actually see something from the response?  Let's continue by looking at a real world example; a command to create a new session in the ZAP intercepting proxy:
 
 ```json
