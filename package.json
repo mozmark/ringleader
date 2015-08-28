@@ -4,6 +4,7 @@
     "author": "Mark Goodwin",
     "version": "0.4",
     "fullName": "Firefox Plug-n-Hack",
-    "id": "jid1-CZ1BeoFM9Mmlzg",
-    "description": "A Firefox addon for configuring and using security tools"
+    "id": "jid1-CZ1BeoFM9Mmlzg@jetpack",
+    "description": "A Firefox addon for configuring and using security tools",
+    "main": "lib/main.js"
 }
