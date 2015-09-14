@@ -18,6 +18,11 @@ var checkboxClicked = function(event) {
   document.getElementById('confirm').disabled = !event.target.checked;
 };
 
-document.getElementById('confirm').addEventListener('click',confirmClicked,false);
-document.getElementById('cancel').addEventListener('click',cancelClicked,false);
-document.getElementById('yup').addEventListener('click',checkboxClicked,false);
+var manageClicked = function() {
+  self.port.emit('manage','manage');
+};
+
+document.getElementById('confirm').addEventListener('click', confirmClicked, false);
+document.getElementById('cancel').addEventListener('click', cancelClicked, false);
+document.getElementById('yup').addEventListener('click', checkboxClicked, false);
+document.getElementById('manage').addEventListener('click', manageClicked, false);
